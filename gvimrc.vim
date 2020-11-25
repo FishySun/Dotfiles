@@ -9,21 +9,26 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'tmsvg/pear-tree'
+Plug 'vim-airline/vim-airline'
+Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 " End of Plugs declarations "
 
-au GUIEnter * simalt ~x		"Always enter as fullscreen in GVim"
-:set guioptions-=T		"No gui menus"	
-:set gfn=Jetbrains_Mono_Medium:h13:W500:cANSI:qDRAFT 
-:set belloff=all		"Stop any alert bells"
-:set noswapfile			"No annoying swaps" 
-:set nobackup			"No backups"
-:set showcmd
+"General Configs"
+au GUIEnter * simalt ~x		
+:set guioptions-=T			
+:set encoding=UTF-8
+:set gfn=mononoki_NF:cANSI:qDRAFT:h16
+:set bg=dark
+:colorscheme palenight
+:set belloff=all		
+:set noswapfile			 
+:set nobackup			:set showcmd
 :set ruler
 :syntax on
-:set nocompatible		"NO compatibility issues"
-:set nu rnu			"Display relative as well as absolute line numbers"
-:set autochdir			"Make the Present working directory to the directory of the current buffer"
+:set nocompatible		
+:set nu rnu			
+:set autochdir			
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
@@ -35,6 +40,7 @@ augroup END
 :set incsearch
 :filetype plugin indent on
 
+"Custom Keybindings"
 :map <silent> <C-o> :NERDTreeToggle<CR>
 :nnoremap <silent> <space> :TagbarToggle<CR>
 :nnoremap <S-y> :%y+<CR>	
@@ -44,7 +50,7 @@ augroup END
 :nnoremap <C-H> <C-W><C-H>
 :inoremap aa <Right>
 :inoremap hh <Left>
-:inoremap jj <ESC>		"Return to normal mode"
+:inoremap jj <ESC>		
 
 "Coding standards" 
 set noexpandtab				
@@ -61,6 +67,8 @@ let g:pear_tree_repeatable_expand = 0
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
+let g:palenight_terminal_italics=1
+let g:airline_theme="palenight"
 
 "For compiling, running and saving a file from Vim for C++, C, Python"
 autocmd filetype cpp nnoremap <silent> <C-c> :w <bar> !g++ -pipe -Wall -O2 -std=c++17 % -lm -o a && a<CR>
