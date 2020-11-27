@@ -18,15 +18,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/syntastic'
 Plug 'tmsvg/pear-tree'
 call plug#end()
 " End of Plugs declarations "
 
-:set gfn=mononoki_Nerd_Font:Regular:h13 "Change it to whatever font suitable for the user"
+"Vim options"
 :set belloff=all		"Stop any alert bells"
 :set noswapfile			"No annoying swaps" 
 :set nobackup			"No backups"
 :set showcmd
+:set termguicolors
 :set t_Co=25
 :set bg=dark
 :colorscheme palenight
@@ -45,6 +47,7 @@ augroup END
 :set incsearch
 :filetype plugin indent on
 
+"Keybindings"
 :map <silent> <C-o> :NERDTreeToggle<CR>
 :nnoremap <silent> <space> :TagbarToggle<CR>
 :nnoremap <S-y> :%y+<CR>	"Copy current buffer"
@@ -56,7 +59,7 @@ augroup END
 :inoremap hh <Left>
 :inoremap jj <ESC>			"Return to normal mode"
 
-"Coding standards => Only TABS baby, only weirdos use spaces"
+"Coding standards"
 set noexpandtab				
 set smartindent			
 set autoindent
@@ -65,9 +68,24 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 
+"Plugin configs"
 let g:rainbow_active = 1
 let g:pear_tree_repeatable_expand = 0
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 let g:airline_theme = 'palenight'
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+let g:airline_powerline_fonts = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
