@@ -65,8 +65,11 @@ alias yayupdate="yay -Syyu"
 alias yayremove="yay -R"
 alias yayinstall="yay -S"
 alias yayclean="yay -Sc"
+alias mv="mv -v"
+alias cp="cp -v"
+alias rm="rm -v"
 alias vi="nvim"
-alias ge="geany"
+alias svi="sudo nvim"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
@@ -85,5 +88,5 @@ man() {
 }
 
 # Search the official repo, when entering an unrecognized command 
-# N.B: install the pkgfile and then run pkgfile -U to get the desired result
+# N.B: install the pkgfile and then run "pkgfile -u" to get the desired result
 source /usr/share/doc/pkgfile/command-not-found.bash
