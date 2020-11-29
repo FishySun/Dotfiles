@@ -17,10 +17,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'jremmen/vim-ripgrep'
-Plug 'kien/ctrlp.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 " End of Plugs declarations "
 
@@ -61,11 +61,12 @@ nnoremap <Leader>s :vsplit<CR>
 nnoremap <Leader>= <C-w>=
 nnoremap <Leader>m <C-W>_<C-W><Bar> 
 nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>-	:vertical resize -5<CR> nnoremap <Leader>ps :Rg<SPACE>
+nnoremap <Leader>-	:vertical resize -5<CR> 
+nnoremap <Leader>f	:Files ~
+nnoremap <Leader>ps :RG<CR>
 inoremap aa <Right>
 inoremap hh <Left>
 inoremap jj <ESC>	
-map <silent> <Leader>f :CtrlP ~<CR>
 
 "Coding standards"
 set encoding=utf-8
@@ -92,10 +93,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 let g:airline_powerline_fonts = 1
-if executable('rg')
-	let g:rg_derive_root='true'
-endif
-let ctrlp_use_caching = 0
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -103,3 +100,13 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
+let g:fzf_layout = { 'down':  '25%'}
+let g:fzf_preview_window = []
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
