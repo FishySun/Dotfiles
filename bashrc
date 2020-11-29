@@ -20,7 +20,8 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # Prompt
-PS1='\[\e[0;1;32m\]\u\[\e[0;1;32m\]@\[\e[0;1;32m\]\H\[\e[0m\]:\[\e[0;1;94m\]\W\[\e[0;1m\]$\[\e[m\] \[\e0' 
+# PS1='\[\e[0;1;32m\]\u\[\e[0;1;32m\]@\[\e[0;1;32m\]\H\[\e[0m\]:\[\e[0;1;94m\]\W\[\e[0;1m\]$\[\e[m\] \[\e0'
+PS1='\[\e[0;1;95m\][\[\e[0;1;95m\]\u\[\e[0;1;95m\]@\[\e[0;1;95m\]\H\[\e[m\] \[\e[0;1;92m\]\W\[\e[0;1;95m\]]\[\e[0;1;95m\]$\[\e[m\] \[\e0'
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
@@ -75,6 +76,9 @@ alias svi="sudo nvim"
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
 alias ll='ls -lh'
 alias la='ls -lha'
+
+# Using bat, a modern clone of cat with syntax highlighting
+alias bat="bat --theme=\"ansi-dark\""
 
 # For colorizing man pages
 man() {
