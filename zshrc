@@ -72,6 +72,8 @@ alias cp="cp -v"
 alias rm="rm -v"
 alias vi="nvim"
 alias svi="sudo nvim"
+alias rb="reboot"
+alias pf="poweroff"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
