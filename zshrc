@@ -31,7 +31,7 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Oh-my-zsh plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
@@ -72,8 +72,6 @@ alias cp="cp -v"
 alias rm="rm -v"
 alias vi="nvim"
 alias svi="sudo nvim"
-alias rb="reboot"
-alias pf="poweroff"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
@@ -97,3 +95,6 @@ function man() {
 # Search the official repo, when entering an unrecognized command 
 # N.B: install the pkgfile and then run "pkgfile -u" to get the desired result
 source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Export GPG key for signed commits
+export GPG_TTY=$(tty)
