@@ -19,7 +19,7 @@ export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
 
 # zsh-theme
-ZSH_THEME="awesomepanda"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
