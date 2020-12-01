@@ -95,6 +95,3 @@ function man() {
 # Search the official repo, when entering an unrecognized command 
 # N.B: install the pkgfile and then run "pkgfile -u" to get the desired result
 source /usr/share/doc/pkgfile/command-not-found.zsh
-
-# Export GPG key for signed commits
-export GPG_TTY=$(tty)
