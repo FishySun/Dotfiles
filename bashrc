@@ -11,7 +11,6 @@
 export TERM="alacritty"
 export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
-export GPG_TTY=$(tty)
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
