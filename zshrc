@@ -31,7 +31,7 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Oh-my-zsh plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
