@@ -10,6 +10,9 @@
 
 " VIM Plugs"
 call plug#begin('~/local/share/nvim/plugged')
+Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python'}
+Plug 'zchee/deoplete-jedi', {'for': 'python'}
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -26,18 +29,15 @@ call plug#end()
 
 "Vim options"
 set noshowmode
-set showcmd
 set belloff=all	
 set noswapfile	
 set nobackup
+set autochdir
 set t_Co=256
 set bg=dark
 colorscheme palenight
 set ruler
-syntax on
-set nocompatible	
-set nu rnu		
-set autochdir
+set nu rnu
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
@@ -46,6 +46,7 @@ augroup END
 set smartcase
 set nowrap
 set incsearch
+set completeopt-=preview
 filetype plugin indent on
 
 "Keybindings"
@@ -62,14 +63,15 @@ nnoremap <Leader>= <C-w>=
 nnoremap <Leader>m <C-W>_<C-W><Bar> 
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>-	:vertical resize -5<CR> 
-nnoremap <Leader>f	:Files ~
-nnoremap <Leader>ps :RG<CR>
+nnoremap <Leader>f	:Files ../<CR>
+nnoremap <Leader>ps :RG <CR>
 inoremap aa <Right>
 inoremap hh <Left>
-inoremap jj <ESC>	
+inoremap jj <ESC>
 
 "Coding standards"
 set encoding=utf-8
+set fileformat=unix
 set noexpandtab				
 set smartindent			
 set autoindent
@@ -78,7 +80,22 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 
+"PEP-8 style code"
+au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
+let python_highlight_all=1
+syntax on
+
 "Plugin configs"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:jedi#completions_enabled = 0
+let g:jedi#use_splits_not_buffers = "right"
+let g:deoplete#enable_at_startup = 1
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
 let g:pear_tree_repeatable_expand = 0
@@ -92,6 +109,8 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+
+let g:gruvbox_invert_selection = '0' 
 let g:airline_powerline_fonts = 1
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
