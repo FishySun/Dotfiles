@@ -16,8 +16,8 @@ window:
     lines: 0
     
   padding:
-    x: 5
-    y: 5
+    x: 3 
+    y: 11 
     
   dynamic_padding: false
 
@@ -41,10 +41,6 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Scroll to the bottom when new text is written to the terminal.
-  #auto_scroll: true
-
-
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
@@ -66,7 +62,7 @@ font:
     style: Italic
 
   # Point size of the font
-  size: 16
+  size: 16.0 
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
