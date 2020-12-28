@@ -129,3 +129,14 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+
+" For running C, Cpp and Python programs from inside Vim"
+function! TermWrapper(command) abort
+	exec 'term ' . a:command
+	exec 'startinsert'
+endfunction
+
+autocmd Filetype cpp nnoremap <Leader>r :call TermWrapper("g++ -std=c++17 -g -O2 -Wall -Werror -lm -pipe % -o a && ./a")<CR>
+autocmd Filetype c nnoremap <Leader>r :call TermWrapper("gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm % -o a && ./a")<CR>
+autocmd Filetype python nnoremap <Leader>p :call TermWrapper("python %")<CR>
