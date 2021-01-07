@@ -11,6 +11,7 @@
 export TERM="alacritty"
 export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
+export GPG_TTY=$(tty)
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -52,27 +53,26 @@ shopt -s expand_aliases # expand aliases
 shopt -s checkwinsize # check the window size after each command 
 
 #ignore casesensitive completion
-bind "set completion-ignore-case on"
+bind "set completion-ignore-case off"
 
 # Alias declarations
-alias grep="grep -i --color=always"
+alias grep="grep -in --color=always"
 alias diff="diff --color=always"
 alias ip='ip -color=auto'
 alias update="sudo pacman -Syyu"
 alias install="sudo pacman -S"
-alias remove="sudo pacman -R"
+alias remove="sudo pacman -Rs"
 alias clean="sudo pacman -Sc"
+alias pacupdate="sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist"
 alias yayupdate="yay -Syyu"
-alias yayremove="yay -R"
+alias yayremove="yay -Rs"
 alias yayinstall="yay -S"
 alias yayclean="yay -Sc"
 alias mv="mv -v"
 alias cp="cp -v"
 alias rm="rm -v"
-alias vi="nvim"
-alias svi="sudo nvim"
-alias rb="reboot"
-alias pf="poweroff"
+alias vim="nvim"
+alias svim="sudo nvim"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
@@ -91,6 +91,12 @@ man() {
     LESS_TERMCAP_ue=$'\e[0m' \
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
+}
+
+# For making a dir and also cd into it
+mcd() {
+	mkdir -p "$1"
+	cd "$1"
 }
 
 # Search the official repo, when entering an unrecognized command 
