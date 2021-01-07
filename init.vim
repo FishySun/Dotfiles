@@ -20,7 +20,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tmsvg/pear-tree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -47,6 +46,7 @@ set smartcase
 set nowrap
 set incsearch
 set completeopt-=preview
+filetype plugin on
 filetype plugin indent on
 
 "Keybindings"
@@ -65,9 +65,9 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>-	:vertical resize -5<CR> 
 nnoremap <Leader>f	:Files ../<CR>
 nnoremap <Leader>ps :RG <CR>
-inoremap aa <Right>
-inoremap hh <Left>
+nnoremap <Leader>cp :-1read ~/Documents/Snippets/cp.cpp<CR>:9<CR>o
 inoremap jj <ESC>
+inoremap {<CR> {<CR>}<ESC>ko
 
 "Coding standards"
 set encoding=utf-8
@@ -98,11 +98,9 @@ let g:jedi#use_splits_not_buffers = "right"
 let g:deoplete#enable_at_startup = 1
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
-let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
 let g:airline_theme = 'palenight'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
@@ -110,7 +108,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:gruvbox_invert_selection = '0' 
 let g:airline_powerline_fonts = 1
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -137,6 +134,6 @@ function! TermWrapper(command) abort
 	exec 'startinsert'
 endfunction
 
-autocmd Filetype cpp nnoremap <Leader>r :call TermWrapper("g++ -std=c++17 -g -O2 -Wall -Werror -lm -pipe % -o a && ./a")<CR>
-autocmd Filetype c nnoremap <Leader>r :call TermWrapper("gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm % -o a && ./a")<CR>
-autocmd Filetype python nnoremap <Leader>p :call TermWrapper("python %")<CR>
+autocmd Filetype cpp nnoremap <Leader>r :w <bar> call TermWrapper("g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a && ./a")<CR>
+autocmd Filetype c nnoremap <Leader>r :w <bar> call TermWrapper("gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm % -o a && ./a")<CR>
+autocmd Filetype python nnoremap <Leader>p :w <bar> call TermWrapper("python %")<CR>
