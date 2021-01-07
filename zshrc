@@ -19,7 +19,10 @@ export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
 
 # zsh-theme
-ZSH_THEME="awesomepanda"
+ZSH_THEME="wedisagree"
+
+# Uncomment the following line to use case-sensitive completion
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
@@ -28,10 +31,11 @@ DISABLE_UPDATE_PROMPT="true"
 DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
+# DISABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Oh-my-zsh plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
@@ -61,17 +65,27 @@ alias diff="diff --color=always"
 alias ip='ip -color=auto'
 alias update="sudo pacman -Syyu"
 alias install="sudo pacman -S"
-alias remove="sudo pacman -R"
+alias remove="sudo pacman -Rs"
 alias clean="sudo pacman -Sc"
+alias pacupdate="sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist"
 alias yayupdate="yay -Syyu"
-alias yayremove="yay -R"
-alias yayinstall="yay -S"
-alias yayclean="yay -Sc"
+alias yays="yay -S"
+alias yayr="yay -Rs"
+alias yaycl="yay -Sc"
 alias mv="mv -v"
 alias cp="cp -v"
-alias rm="rm -v"
-alias vi="nvim"
-alias svi="sudo nvim"
+alias rm="rm -rfv"
+alias vim="nvim"
+alias svim="sudo nvim"
+
+# Custom commands for better navigation
+alias codef="cd ~/Documents/CP/Codeforces"
+alias atco="cd ~/Documents/CP/Atcoder/"
+alias hack="cd ~/Documents/CP/Hackerrank/"
+alias misc="cd ~/Documents/CP/Misc"
+alias euler="cd ~/Documents/CP/ProjectEuler"
+alias prac="cd ~/Documents/CP/Practice/"
+alias codec="cd ~/Documents/CP/Codechef/"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
@@ -90,6 +104,12 @@ function man() {
     LESS_TERMCAP_ue=$'\e[0m' \
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
+}
+
+# For making a dir and cd into it
+function mcd() {
+	mkdir -p "$1"
+	cd "$1"
 }
 
 # Search the official repo, when entering an unrecognized command 
