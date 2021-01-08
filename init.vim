@@ -134,5 +134,5 @@ function! Run(command) abort
 	exec 'startinsert'
 endfunction
 
-autocmd Filetype cpp nnoremap <Leader>r :w <bar> call Run('g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result ' . expand("%") . ' -o a && ./a')<CR><CR>
-autocmd Filetype c nnoremap <Leader>r :w <bar> call Run('gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm ' .expand("%") . ' -o a && ./a')<CR><CR>
+autocmd Filetype cpp nnoremap <Leader>r :w <bar> !g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a<CR><CR>:call Run('./a')<CR>
+autocmd Filetype c nnoremap <Leader>r :w <bar> !gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm -Wno-unused-result % -o a<CR><CR>:call Run('./a')<CR>
