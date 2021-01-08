@@ -129,11 +129,10 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 
 " For running C, Cpp and Python programs from inside Vim"
-function! TermWrapper(command) abort
-	exec 'term ' . a:command
+function! Run(command) abort
+	exec '-tabnew | term ' . a:command
 	exec 'startinsert'
 endfunction
 
-autocmd Filetype cpp nnoremap <Leader>r :w <bar> call TermWrapper("g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a && ./a")<CR>
-autocmd Filetype c nnoremap <Leader>r :w <bar> call TermWrapper("gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm % -o a && ./a")<CR>
-autocmd Filetype python nnoremap <Leader>p :w <bar> call TermWrapper("python %")<CR>
+autocmd Filetype cpp nnoremap <Leader>r :w <bar> call Run('g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result ' . expand("%") . ' -o a && ./a')<CR><CR>
+autocmd Filetype c nnoremap <Leader>r :w <bar> call Run('gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm ' .expand("%") . ' -o a && ./a')<CR><CR>
