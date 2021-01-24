@@ -31,10 +31,12 @@ set noshowmode
 set belloff=all	
 set noswapfile	
 set nobackup
+set cursorline
 set autochdir
 set t_Co=256
 set bg=dark
-colorscheme palenight
+colorscheme gruvbox
+let g:gruvbox_invert_selection=0
 set ruler
 set nu rnu
 augroup numbertoggle
@@ -98,7 +100,7 @@ let g:jedi#use_splits_not_buffers = "right"
 let g:deoplete#enable_at_startup = 1
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
-let g:airline_theme = 'palenight'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 if (has("nvim"))
@@ -128,11 +130,11 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 
-" For running C, Cpp and Python programs from inside Vim"
+" For running C, Cpp programs from inside Vim"
 function! Run(command) abort
 	exec '-tabnew | term ' . a:command
 	exec 'startinsert'
 endfunction
 
-autocmd Filetype cpp nnoremap <Leader>r :w <bar> !g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a<CR><CR>:call Run('./a')<CR>
-autocmd Filetype c nnoremap <Leader>r :w <bar> !gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm -Wno-unused-result % -o a<CR><CR>:call Run('./a')<CR>
+autocmd Filetype cpp nnoremap <Leader>r :w <bar> !g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a<CR>:call Run('./a')<CR>
+autocmd Filetype c nnoremap <Leader>r :w <bar> !gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm -Wno-unused-result % -o a<CR>:call Run('./a')<CR>
