@@ -1,58 +1,39 @@
-"Author: Prasun Biswas @ FishySun"
-"For GVim for Windows"
-"------------------------------"
-
-" VIM Plugs"
-call plug#begin('~/local/share/nvim/plugged')
-Plug 'luochen1990/rainbow'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-surround'
-Plug 'tmsvg/pear-tree'
-Plug 'vim-airline/vim-airline'
-Plug 'drewtempelmeyer/palenight.vim'
+"Vim-Plug"
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdcommenter'
+Plug 'tomasr/molokai'
 call plug#end()
-" End of Plugs declarations "
 
-"General Configs"
-au GUIEnter * simalt ~x		
-:set guioptions-=T			
-:set encoding=UTF-8
-:set gfn=mononoki_NF:cANSI:qDRAFT:h16
-:set bg=dark
-:colorscheme palenight
-:set belloff=all		
-:set noswapfile			 
-:set nobackup			:set showcmd
-:set ruler
-:syntax on
-:set nocompatible		
-:set nu rnu			
-:set autochdir			
+"Vim settings"
+au GUIEnter * simalt ~x
+colorscheme molokai
+let g:molokai_original = 1
+set hidden
+set cursorline
+set bg=dark
+set nocompatible 
+set belloff=all
+set guioptions-=T
+set guifont=Cascadia_Mono_PL:h14:cANSI:qDRAFT
+set encoding=UTF-8
+set noswapfile
+set nobackup
+set ruler
+syntax on 
+set nu rnu
+set autochdir 
 augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set rnu
-    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set rnu
+	autocmd BufLeave,FocusLost,InsertEnter * set nornu
 augroup END
-:set smartcase
-:set nowrap
-:set formatoptions-=T
-:set incsearch
-:filetype plugin indent on
-
-"Custom Keybindings"
-:map <silent> <C-o> :NERDTreeToggle<CR>
-:nnoremap <silent> <space> :TagbarToggle<CR>
-:nnoremap <S-y> :%y+<CR>	
-:nnoremap <C-J> <C-W><C-J>
-:nnoremap <C-K> <C-W><C-K>
-:nnoremap <C-L> <C-W><C-L>
-:nnoremap <C-H> <C-W><C-H>
-:inoremap aa <Right>
-:inoremap hh <Left>
-:inoremap jj <ESC>		
-
-"Coding standards" 
+set showcmd
+set smartcase
+set nowrap
+set formatoptions-=T
+set incsearch
+set nohlsearch
+filetype plugin indent on
 set noexpandtab				
 set smartindent			
 set autoindent
@@ -61,18 +42,24 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 
-"Plugins configurations"
-let g:rainbow_active = 1
-let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
-let g:palenight_terminal_italics=1
-let g:airline_theme="palenight"
+"Keybindings"
+let mapleader=" "
+inoremap jj <ESC>
+inoremap {<CR> {<CR>}<ESC><S-o>
+nnoremap <Leader>cp :-1read ~/Desktop/Snippets/cp.cpp<CR> :6<CR>o
+nnoremap <Leader>p "+p<CR>
+nnoremap <Leader>y :%y+<CR>
 
-"For compiling, running and saving a file from Vim for C++, C, Python"
-autocmd filetype cpp nnoremap <silent> <C-c> :w <bar> !g++ -pipe -Wall -O2 -std=c++17 % -lm -o a && a<CR>
- 
-autocmd filetype c nnoremap <silent> <C-c> :w <bar> !gcc -pipe -Wall -O2 -std=c11  % -lm -o a && a<CR>
+"Compiling and executing source files"
+autocmd filetype cpp nnoremap <silent> <Leader>r :w <bar> !g++ -pipe -Wall -Wextra -Wshadow -Werror -O2 -std=c++17 % -lm -o a && a<CR>
+autocmd filetype c nnoremap <silent> <Leader>r :w <bar> !gcc -pipe -Wall -O2 -std=c11  % -lm -o a && a<CR>
+autocmd filetype python nnoremap <silent> <Leader>r :w <bar> !python %<CR>
 
-autocmd filetype python nnoremap <silent> <C-c> :w <bar> !python %<CR>
+"Plugins Config"
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
