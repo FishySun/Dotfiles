@@ -7,19 +7,21 @@
 # | |  | | | (_| \__ \ |_| | | | | | |_/ / \__ \\ V  V / (_| \__ \
 # \_|  |_|  \__,_|___/\__,_|_| |_| \____/|_|___/ \_/\_/ \__,_|___/
 
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/prasun/.oh-my-zsh"
 
 # EXPORTS
 export TERM="alacritty"
 export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
-
-# zsh-theme
-ZSH_THEME="wedisagree"
 
 # Uncomment the following line to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -37,11 +39,6 @@ DISABLE_AUTO_TITLE="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
 
-# Oh-my-zsh plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-
-source $ZSH/oh-my-zsh.sh
-
 # Language preference
 export LANG=en_US.UTF-8
 
@@ -49,8 +46,8 @@ export LANG=en_US.UTF-8
 HISTFILE=~/.histfile
 HISTSIZE=1000
 HISTFILESIZE=2000
-setopt autocd extendedglob notify 
-bindkey -e
+setopt autocd extendedglob notify COMPLETE_ALIASES 
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/prasun/.zshrc'
@@ -58,6 +55,12 @@ zstyle :compinstall filename '/home/prasun/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# For autocompletion with an arrow-key driven interface
+zstyle ':completion:*' menu select
+
+# For enabling autocompletion of privileged environments in privileged commands
+zstyle ':completion::complete:*' gain-privileges 1
 
 # Alias declarations
 alias grep="grep -i --color=always"
@@ -80,12 +83,14 @@ alias svim="sudo nvim"
 
 # Custom commands for better navigation
 alias codef="cd ~/Documents/CP/Codeforces"
-alias atco="cd ~/Documents/CP/Atcoder/"
+alias atco="cd ~/Documents/CP/AtCoder/"
 alias hack="cd ~/Documents/CP/Hackerrank/"
 alias misc="cd ~/Documents/CP/Misc"
 alias euler="cd ~/Documents/CP/ProjectEuler"
 alias prac="cd ~/Documents/CP/Practice/"
 alias codec="cd ~/Documents/CP/Codechef/"
+alias lad="cd ~/Documents/CP/CPLadder/"
+alias dev="cd ~/Documents/Dev/"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
@@ -106,12 +111,22 @@ function man() {
     command man "$@"
 }
 
-# For making a dir and cd into it
+# For making a dir and changing directory into it
 function mcd() {
-	mkdir -p "$1"
-	cd "$1"
+	mkdir -p "$1" || exit
+	cd "$1" || exit
 }
 
 # Search the official repo, when entering an unrecognized command 
 # N.B: install the pkgfile and then run "pkgfile -u" to get the desired result
 source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# For Fish-styled syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# For Smarter auto suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
