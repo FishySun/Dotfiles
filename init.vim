@@ -23,6 +23,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'sainnhe/sonokai'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 " End of Plugs declarations "
 
@@ -35,8 +37,8 @@ set cursorline
 set autochdir
 set t_Co=256
 set bg=dark
-colorscheme gruvbox
-let g:gruvbox_invert_selection=0
+colorscheme sonokai
+" let g:gruvbox_invert_selection=0
 set ruler
 set nu rnu
 augroup numbertoggle
@@ -44,10 +46,13 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
     autocmd BufLeave,FocusLost,InsertEnter * set nornu
 augroup END
+set hidden
 set smartcase
+set nohlsearch
 set nowrap
 set incsearch
 set completeopt-=preview
+filetype on
 filetype plugin on
 filetype plugin indent on
 
@@ -100,9 +105,10 @@ let g:jedi#use_splits_not_buffers = "right"
 let g:deoplete#enable_at_startup = 1
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
-let g:airline_theme = 'gruvbox'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'sonokai'
+let g:airline#extensions#tabline#enabled = 1           
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0 
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
