@@ -42,11 +42,13 @@ DISABLE_AUTO_TITLE="true"
 # Language preference
 export LANG=en_US.UTF-8
 
-# Lines configured by zsh-newuser-install
+# History settings for ZSH
 HISTFILE=~/.histfile
-HISTSIZE=1000
-HISTFILESIZE=2000
-setopt autocd extendedglob notify COMPLETE_ALIASES 
+HISTSIZE=5000
+SAVEHIST=5000
+
+# Misc good settings for ZSH
+setopt autocd extendedglob notify COMPLETE_ALIASES appendhistory
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
