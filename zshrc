@@ -93,7 +93,7 @@ alias prac="cd ~/Documents/CP/Practice/"
 alias codec="cd ~/Documents/CP/Codechef/"
 alias lad="cd ~/Documents/CP/CPLadder/"
 alias dev="cd ~/Documents/Dev/"
-alias spoj="cd ~/Documents/SPOJ/"
+alias spoj="cd ~/Documents/CP/SPOJ/"
 
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
