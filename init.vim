@@ -18,13 +18,15 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'sainnhe/sonokai'
+" Plug 'sainnhe/sonokai'
 Plug 'sheerun/vim-polyglot'
+Plug 'romgrk/doom-one.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'mhinz/vim-startify'
 call plug#end()
 " End of Plugs declarations "
 
@@ -37,8 +39,7 @@ set cursorline
 set autochdir
 set t_Co=256
 set bg=dark
-colorscheme sonokai
-" let g:gruvbox_invert_selection=0
+colorscheme doom-one
 set ruler
 set nu rnu
 augroup numbertoggle
@@ -105,7 +106,7 @@ let g:jedi#use_splits_not_buffers = "right"
 let g:deoplete#enable_at_startup = 1
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
-let g:airline_theme = 'sonokai'
+let g:airline_theme ='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1           
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0 
@@ -135,7 +136,6 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-
 " For running C, Cpp programs from inside Vim"
 function! Run(command) abort
 	exec '-tabnew | term ' . a:command
@@ -144,3 +144,4 @@ endfunction
 
 autocmd Filetype cpp nnoremap <Leader>r :w <bar> !g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a<CR>:call Run('./a')<CR>
 autocmd Filetype c nnoremap <Leader>r :w <bar> !gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm -Wno-unused-result % -o a<CR>:call Run('./a')<CR>
+
