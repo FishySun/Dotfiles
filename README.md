@@ -1,2 +1,2 @@
 # Dotfiles
-This repo contains my .files for bash, vim, i3 wm etc
+One of my most **valueable** possessions!
