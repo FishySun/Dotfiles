@@ -10,9 +10,6 @@
 
 " VIM Plugs"
 call plug#begin('~/local/share/nvim/plugged')
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python'}
-Plug 'zchee/deoplete-jedi', {'for': 'python'}
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -92,18 +89,11 @@ set backspace=indent,eol,start
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
-highlight BadWhitespace ctermbg=red guibg=red
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
 let python_highlight_all=1
 syntax on
 
 "Plugin configs"
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:jedi#completions_enabled = 0
-let g:jedi#use_splits_not_buffers = "right"
-let g:deoplete#enable_at_startup = 1
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
 let g:airline_theme ='onehalfdark'
