@@ -1,2 +1,2 @@
 # Dotfiles
-One of my most **valueable** possessions!
+One of my most **valueable** possession!
