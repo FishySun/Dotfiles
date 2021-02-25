@@ -34,9 +34,10 @@ set noswapfile
 set nobackup
 set cursorline
 set autochdir
-set t_Co=256
-set bg=dark
 colorscheme doom-one
+set bg=dark
+set t_Co=256
+set termguicolors
 set ruler
 set nu rnu
 augroup numbertoggle
@@ -70,7 +71,8 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>-	:vertical resize -5<CR> 
 nnoremap <Leader>f	:Files ../<CR>
 nnoremap <Leader>ps :RG <CR>
-nnoremap <Leader>cp :-1read ~/Documents/Snippets/cp.cpp<CR>:9<CR>o
+nnoremap <Leader>cp :-1read ~/Documents/Snippets/template.cpp<CR>:9<CR>o
+nnoremap <Leader>c :-1read ~/Documents/Snippets/template.c<CR>:3<CR>o
 inoremap jj <ESC>
 inoremap {<CR> {<CR>}<ESC>ko
 
@@ -100,13 +102,6 @@ let g:airline_theme ='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1           
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0 
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-  set termguicolors
-endif
-
 let g:airline_powerline_fonts = 1
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
