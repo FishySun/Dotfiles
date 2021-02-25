@@ -51,9 +51,6 @@ set nohlsearch
 set nowrap
 set incsearch
 set completeopt-=preview
-filetype on
-filetype plugin on
-filetype plugin indent on
 
 "Keybindings"
 let mapleader = " "
@@ -79,13 +76,16 @@ inoremap {<CR> {<CR>}<ESC>ko
 "Coding standards"
 set encoding=utf-8
 set fileformat=unix
-set noexpandtab				
-set smartindent			
-set autoindent
+set noexpandtab	
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
+set smartindent
+set autoindent
+filetype on
+filetype plugin on
+filetype plugin indent on
 
 "PEP-8 style code"
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
