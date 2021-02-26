@@ -19,7 +19,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # EXPORTS
-export TERM="alacritty"
+export TERM="xterm-256"
 export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
 
