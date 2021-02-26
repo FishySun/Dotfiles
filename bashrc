@@ -8,7 +8,7 @@
 # \_|  |_|  \__,_|___/\__,_|_| |_| \____/|_|___/ \_/\_/ \__,_|___/
 
 # EXPORTS
-export TERM="alacritty"
+export TERM="xterm-256"
 export HISTCONTROL="ignoredups:erasedups"
 export EDITOR="nvim"
 export GPG_TTY=$(tty)
