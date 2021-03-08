@@ -101,7 +101,7 @@ alias ll='ls -lh'
 alias la='ls -lha'
 
 # Using bat, a modern clone of cat with syntax highlighting
-alias bat="bat --theme=\"ansi-dark\""
+alias bat="bat --theme=\"ansi\""
 
 # For colorizing man pages
 function man() {
