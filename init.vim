@@ -19,11 +19,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'sainnhe/sonokai'
 Plug 'sheerun/vim-polyglot'
 Plug 'romgrk/doom-one.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'mhinz/vim-startify'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()
 " End of Plugs declarations "
 
@@ -50,7 +50,6 @@ set smartcase
 set nohlsearch
 set nowrap
 set incsearch
-set completeopt-=preview
 
 "Keybindings"
 let mapleader = " "
@@ -76,7 +75,7 @@ inoremap {<CR> {<CR>}<ESC>ko
 "Coding standards"
 set encoding=utf-8
 set fileformat=unix
-set noexpandtab	
+set expandtab	
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -88,10 +87,7 @@ filetype plugin on
 filetype plugin indent on
 
 "PEP-8 style code"
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=80
 let python_highlight_all=1
 syntax on
 
