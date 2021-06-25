@@ -11,25 +11,28 @@
 "Vim-Plug"
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'mhinz/vim-startify'
-Plug 'joshdick/onedark.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'luochen1990/rainbow'
+Plug 'romgrk/doom-one.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "Vim settings"
 au GUIEnter * simalt ~x
+set cursorline
 set hidden
 set bg=dark
-colorscheme onedark
+colorscheme doom-one
 set nocompatible 
 set belloff=all
 set guioptions-=T
-set guifont=Consolas:h18:cANSI:qDRAFT
+set guifont=FantasqueSansMono_NF:h20:cANSI:qDRAFT
 set encoding=UTF-8
 set noswapfile
 set nobackup
@@ -58,6 +61,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
+set laststatus=2
+set noshowmode
 
 "Keybindings"
 let mapleader=" "
@@ -85,6 +90,9 @@ autocmd filetype c nnoremap <silent> <Leader>r :w <bar> !gcc -pipe -Wall -O2 -st
 autocmd filetype python nnoremap <silent> <Leader>r :w <bar> !python %<CR>
 
 "Plugins Config"
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
 let python_highlight_all=1
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
