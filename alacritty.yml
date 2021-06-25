@@ -45,24 +45,24 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: FiraCode Nerd Font Mono
+    family: VictorMono Nerd Font Mono
     # Style can be specified to pick a specific face.
-    style: Retina
+    style: Medium
 
   # The bold font face
   bold:
-    family: FiraCode Nerd Font Mono
+    family: VictorMono Nerd Font Mono
     # Style can be specified to pick a specific face.
-    style: Retina
+    style: SemiBold
 
   # The italic font face
   italic:
-    family: FiraCode Nerd Font Mono
+    family: VictorMono Nerd Font Mono
     # Style can be specified to pick a specific face.
-    style: Italic
+    style: Medium Oblique
 
   # Point size of the font
-  size: 16
+  size: 17
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
