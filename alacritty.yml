@@ -8,7 +8,7 @@
 #\_|  |_|  \__,_|___/\__,_|_| |_| \____/|_|___/ \_/\_/ \__,_|___/
 
 env:
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   dimensions:
