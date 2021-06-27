@@ -10,11 +10,11 @@
 
 " VIM Plugs"
 call plug#begin('~/local/share/nvim/plugged')
+Plug 'ap/vim-css-color'
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -34,10 +34,12 @@ set noswapfile
 set nobackup
 set cursorline
 set autochdir
-colorscheme doom-one
 set bg=dark
-set t_Co=256
-set termguicolors
+colorscheme doom-one
+let g:airline_theme ='onehalfdark'
+if (has("termguicolors"))
+    set termguicolors
+endif
 set ruler
 set nu rnu
 augroup numbertoggle
@@ -94,7 +96,6 @@ syntax on
 "Plugin configs"
 let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
-let g:airline_theme ='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1           
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0 
@@ -125,4 +126,3 @@ endfunction
 
 autocmd Filetype cpp nnoremap <Leader>r :w <bar> !g++ -std=c++17 -g -O2 -Wall -Werror -Wshadow -lm -pipe -Wno-unused-result % -o a<CR>:call Run('./a')<CR>
 autocmd Filetype c nnoremap <Leader>r :w <bar> !gcc -std=c99 -g -O2 -Wall -Werror -pedantic -pipe -lm -Wno-unused-result % -o a<CR>:call Run('./a')<CR>
-
