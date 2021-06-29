@@ -1,8 +1,8 @@
 # Customized zshrc
 # By Prasun Biswas @ Fishysun
 # ______                           ______
-# | ___ \                          | ___ (_)                      
-# | |_/ / __ __ _ ___ _   _ _ __   | |_/ /_ _____      ____ _ ___ 
+# | ___ \                          | ___ (_)
+# | |_/ / __ __ _ ___ _   _ _ __   | |_/ /_ _____      ____ _ ___
 # |  __/ '__/ _` / __| | | | '_ \  | ___ \ / __\ \ /\ / / _` / __|
 # | |  | | | (_| \__ \ |_| | | | | | |_/ / \__ \\ V  V / (_| \__ \
 # \_|  |_|  \__,_|___/\__,_|_| |_| \____/|_|___/ \_/\_/ \__,_|___/
@@ -81,8 +81,8 @@ alias hack="cd ~/Documents/CP/Hackerrank/"
 alias misc="cd ~/Documents/CP/Misc"
 alias euler="cd ~/Documents/CP/ProjectEuler"
 alias prac="cd ~/Documents/CP/Practice/"
-alias codec="cd ~/Documents/CP/Codechef/"
-alias lad="cd ~/Documents/CP/CPLadder/"
+alias codechef="cd ~/Documents/CP/Codechef/"
+alias ladder="cd ~/Documents/CP/CPLadder/"
 alias dev="cd ~/Documents/Dev/"
 alias spoj="cd ~/Documents/CP/SPOJ/"
 
@@ -107,11 +107,11 @@ function man() {
 
 # For making a dir and changing directory into it
 function mcd() {
-	mkdir -p "$1" || exit
-	cd "$1" || exit
+    mkdir -p "$1" || exit
+    cd "$1" || exit
 }
 
-# Search the official repo, when entering an unrecognized command 
+# Search the official repo, when entering an unrecognized command
 # N.B: install the pkgfile and then run "pkgfile -u" to get the desired result
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
