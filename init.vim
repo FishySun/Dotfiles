@@ -10,6 +10,7 @@
 
 " VIM Plugs"
 call plug#begin('~/local/share/nvim/plugged')
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'w0rp/ale'
 Plug 'ap/vim-css-color'
 Plug 'luochen1990/rainbow'
@@ -21,10 +22,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'romgrk/doom-one.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'mhinz/vim-startify'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()
 " End of Plugs declarations "
 
@@ -33,13 +32,14 @@ set noshowmode
 set belloff=all
 set noswapfile
 set nobackup
-set cursorline
 set autochdir
-set bg=dark
-colorscheme doom-one
-let g:airline_theme ='onehalfdark'
 if (has("termguicolors"))
     set termguicolors
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1
+let g:tokyonight_transparent_background = 1
+colorscheme tokyonight
+let g:airline_theme ='tokyonight'
 endif
 set ruler
 set nu rnu
@@ -106,6 +106,7 @@ let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
+let g:airline_left_sep=''
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 
