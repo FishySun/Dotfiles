@@ -74,18 +74,6 @@ alias rm="rm -rfv"
 alias vim="nvim"
 alias svim="sudo nvim"
 
-# Custom commands for better navigation
-alias codef="cd ~/Documents/CP/Codeforces"
-alias atco="cd ~/Documents/CP/AtCoder/"
-alias hack="cd ~/Documents/CP/Hackerrank/"
-alias misc="cd ~/Documents/CP/Misc"
-alias euler="cd ~/Documents/CP/ProjectEuler"
-alias prac="cd ~/Documents/CP/Practice/"
-alias codechef="cd ~/Documents/CP/Codechef/"
-alias ladder="cd ~/Documents/CP/CPLadder/"
-alias dev="cd ~/Documents/Dev/"
-alias spoj="cd ~/Documents/CP/SPOJ/"
-
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
 alias ll='ls -lh'
