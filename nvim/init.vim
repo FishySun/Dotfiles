@@ -10,13 +10,13 @@
 
 " VIM Plugs"
 call plug#begin('~/local/share/nvim/plugged')
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'romgrk/doom-one.vim'
 Plug 'w0rp/ale'
 Plug 'ap/vim-css-color'
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -24,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'mhinz/vim-startify'
+Plug 'jacoborus/tender.vim'
 call plug#end()
 " End of Plugs declarations "
 
@@ -33,14 +34,9 @@ set belloff=all
 set noswapfile
 set nobackup
 set autochdir
-if (has("termguicolors"))
-    set termguicolors
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 1
-let g:tokyonight_transparent_background = 1
-colorscheme tokyonight
-let g:airline_theme ='tokyonight'
-endif
+set termguicolors
+colorscheme doom-one
+let g:doom_one_terminal_colors = v:true
 set ruler
 set nu rnu
 augroup numbertoggle
@@ -70,7 +66,7 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>-	:vertical resize -5<CR>
 nnoremap <Leader>f	:Files ../<CR>
 nnoremap <Leader>ps :RG <CR>
-nnoremap <Leader>cp :-1read ~/Documents/Snippets/template.cpp<CR>:9<CR>o
+nnoremap <Leader>cp :-1read ~/Documents/Snippets/template.cpp<CR>:5<CR>o
 nnoremap <Leader>c :-1read ~/Documents/Snippets/template.c<CR>:3<CR>o
 inoremap jj <ESC>
 inoremap {<CR> {<CR>}<ESC>ko
@@ -91,7 +87,7 @@ filetype plugin indent on
 
 "PEP-8 style code"
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=80
-let python_highlight_all=1
+let g:python_highlight_all=1
 syntax on
 
 "Plugin configs"
@@ -103,12 +99,12 @@ let NERDTreeQuitOnOpen=1
 let g:rainbow_active = 1
 
 "Vim-Airline"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline_left_sep=''
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#show_buffers = 0
+" let g:airline#extensions#tabline#show_close_button = 0
+" let g:airline_left_sep=''
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#ale#enabled = 1
 
 "NerdCommenter"
 let g:NERDCreateDefaultMappings = 1
@@ -124,6 +120,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
             \'c': ['cc'],
             \'cpp': ['cc'],
+            \'python': ['flake8', 'bandit', 'mypy'],
             \}
 let g:ale_c_cc_executable = 'clang' " Or use 'gcc'
 let g:ale_cpp_cc_executable = 'clang++' " Or use 'gcc'
@@ -133,15 +130,18 @@ let g:ale_fixers = {
             \'*': ['remove_trailing_lines', 'trim_whitespace'],
             \'c': ['clangtidy'],
             \'cpp': ['clangtidy'],
+            \'python': ['black', 'yapf'],
             \}
 let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_insert_leave = 1
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_set_highlights = 0
 
+"Lualine"
+lua require('config')
 
 "FZF"
 let g:fzf_layout = { 'down':  '25%'}

@@ -74,6 +74,18 @@ alias rm="rm -rfv"
 alias vim="nvim"
 alias svim="sudo nvim"
 
+# Custom commands for better navigation
+alias codef="cd ~/Documents/CP/Codeforces"
+alias atco="cd ~/Documents/CP/AtCoder/"
+alias hack="cd ~/Documents/CP/Hackerrank/"
+alias misc="cd ~/Documents/CP/Misc"
+alias euler="cd ~/Documents/CP/ProjectEuler"
+alias prac="cd ~/Documents/CP/Practice/"
+alias codechef="cd ~/Documents/CP/Codechef/"
+alias ladder="cd ~/Documents/CP/CPLadder/"
+alias dev="cd ~/Documents/Dev/"
+alias spoj="cd ~/Documents/CP/SPOJ/"
+
 # Using exa instead of ls
 alias ls='exa  --color="always" --colour-scale --group-directories-first --icons'
 alias ll='ls -lh'
@@ -109,6 +121,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # For Smarter auto suggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# For a nice prompt powered by rust
+eval "$(starship init zsh)"
