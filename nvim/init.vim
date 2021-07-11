@@ -68,6 +68,9 @@ nnoremap <Leader>f	:Files ../<CR>
 nnoremap <Leader>ps :RG <CR>
 nnoremap <Leader>cp :-1read ~/Documents/Snippets/template.cpp<CR>:5<CR>o
 nnoremap <Leader>c :-1read ~/Documents/Snippets/template.c<CR>:3<CR>o
+nnoremap <Leader>an :ALENext<CR>
+nnoremap <Leader>ap :ALEPrevious<CR>
+nnoremap <Leader>af :ALEFix<CR>
 inoremap jj <ESC>
 inoremap {<CR> {<CR>}<ESC>ko
 
