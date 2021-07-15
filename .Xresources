@@ -1,4 +1,4 @@
-#define myFont SauceCodePro Nerd Font
+#define myFont VictorMono Nerd Font
 
 !-- Xft settings --!
 Xft.antialias:      1
